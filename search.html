@@ -31,22 +31,42 @@
 
                 <button onclick="searchGuitar()">Search Guitar</button>
             </div>
+
+            <table id="guitarTable">
+                <thead>
+                    <tr>
+                        <th>Serial Number</th>
+                        <th>Price</th>
+                        <th>Builder</th>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>Back Wood</th>
+                        <th>Top Wood</th>
+                    </tr>
+                </thead>
+                <tbody id="guitarTableBody">
+                </tbody>
+            </table>
+        </div>
         </div>
         <script>
             function homeScreen() {
-                document.getElementById("home");
+                document.getElementById("home").style.display = "block";
+                document.getElementById("about").style.display = "none";
+                document.getElementById("add").style.display = "none";
+                document.getElementById("search").style.display = "none";
             }
 
             function aboutScreen() {
-                document.getElementById("about");
+                window.location.href = "about.html";
             }
 
             function addScreen() {
-                document.getElementById("add");
+                window.location.href = "add.html";
             }
 
             function searchScreen() {
-                document.getElementById("search");
+                window.location.href = "search.html";
             }
 
             function searchGuitar() {
@@ -60,7 +80,27 @@
                     "topWood": document.getElementById("topWood").value,
                 }
 
-                alert("You entered: " + JSON.stringify(guitar));
+                var matchingGuitars = guitars.filter(function(guitar) {
+                return (!builder || guitar.builder.includes(builder)) &&
+                       (!model || guitar.model.includes(model)) &&
+                       (!type || guitar.type.includes(type)) &&
+                       (!backWood || guitar.backWood.includes(backWood)) &&
+                       (!topWood || guitar.topWood.includes(topWood));
+                });
+                
+                var tableBody = document.getElementById("guitarTableBody");
+                tableBody.innerHTML = "";
+                
+                matchingGuitars.forEach(function(guitar) {
+                    var row = tableBody.insertRow();
+                    row.insertCell().textContent = guitar.serialNumber;
+                    row.insertCell().textContent = guitar.price;
+                    row.insertCell().textContent = guitar.builder;
+                    row.insertCell().textContent = guitar.model;
+                    row.insertCell().textContent = guitar.type;
+                    row.insertCell().textContent = guitar.backWood;
+                    row.insertCell().textContent = guitar.topWood;
+                });
             }
         </script>
     </body>
