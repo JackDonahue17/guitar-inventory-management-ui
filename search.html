@@ -69,23 +69,27 @@
                 window.location.href = "search.html";
             }
 
+            let guitars = [
+                { "serialNumber": "374", "price": 139.99, "builder": "Jackson", "model": "Acoustic", "type": "Bass", "backWood": "Maple", "topWood": "Oak" },
+                { "serialNumber": "7546434", "price": 999.99, "builder": "Cort", "model": "Electric", "type": "Steel", "backWood": "Oak", "topWood": "Walnut" },
+                { "serialNumber": "2354574", "price": 499.99, "builder": "Jackson", "model": "String", "type": "Gitarre", "backWood": "Walnut", "topWood": "Pine" },
+                { "serialNumber": "8708745", "price": 249.99, "builder": "Ibanez", "model": "Electric", "type": "Archtop", "backWood": "Birch", "topWood": "Elm" },
+                { "serialNumber": "23489", "price": 99.99, "builder": "Guild", "model": "Les Paul", "type": "Classical", "backWood": "Birch", "topWood": "Birch" },
+            ];
+
             function searchGuitar() {
-                var guitar = {
-                    "serialNumber": document.getElementById("serialNumber").value,
-                    "price": document.getElementById("price").value,
-                    "builder": document.getElementById("builder").value,
-                    "model": document.getElementById("model").value,
-                    "type": document.getElementById("type").value,
-                    "backWood": document.getElementById("backWood").value,
-                    "topWood": document.getElementById("topWood").value,
-                }
+                var builder = document.getElementById("builder").value;
+                var model = document.getElementById("model").value;
+                var type = document.getElementById("type").value;
+                var backWood = document.getElementById("backWood").value;
+                var topWood = document.getElementById("topWood").value;
 
                 var matchingGuitars = guitars.filter(function(guitar) {
-                return (!builder || guitar.builder.includes(builder)) &&
-                       (!model || guitar.model.includes(model)) &&
-                       (!type || guitar.type.includes(type)) &&
-                       (!backWood || guitar.backWood.includes(backWood)) &&
-                       (!topWood || guitar.topWood.includes(topWood));
+                    return (!builder || guitar.builder.includes(builder)) &&
+                        (!model || guitar.model.includes(model)) &&
+                        (!type || guitar.type.includes(type)) &&
+                        (!backWood || guitar.backWood.includes(backWood)) &&
+                        (!topWood || guitar.topWood.includes(topWood));
                 });
                 
                 var tableBody = document.getElementById("guitarTableBody");

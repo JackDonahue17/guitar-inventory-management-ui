@@ -13,32 +13,27 @@
                 <button onclick="searchScreen()">Search</button>
             </div>
             <div>
-                <!--Put an Image here-->
+                <img src="Guitar.jpeg" alt="Acoustic Guitar">
             </div>
         </div>
         <script>
-            let guitars = [
-                { "serialNumber": "374", "price": 139.99, "builder": "Jackson", "model": "Acoustic", "type": "Bass", "backWood": "Maple", "topWood": "Oak" },
-                { "serialNumber": "7546434", "price": 999.99, "builder": "Cort", "model": "Electric", "type": "Steel", "backWood": "Oak", "topWood": "Walnut" },
-                { "serialNumber": "2354574", "price": 499.99, "builder": "Jackson", "model": "String", "type": "Gitarre", "backWood": "Walnut", "topWood": "Pine" },
-                { "serialNumber": "8708745", "price": 249.99, "builder": "Ibanez", "model": "Electric", "type": "Archtop", "backWood": "Birch", "topWood": "Elm" },
-                { "serialNumber": "23489", "price": 99.99, "builder": "Guild", "model": "Les Paul", "type": "Classical", "backWood": "Birch", "topWood": "Birch" },
-            ]
-
             function homeScreen() {
-                document.getElementById("home");
+                document.getElementById("home").style.display = "block";
+                document.getElementById("about").style.display = "none";
+                document.getElementById("add").style.display = "none";
+                document.getElementById("search").style.display = "none";
             }
 
             function aboutScreen() {
-                document.getElementById("about");
+                window.location.href = "about.html";
             }
 
             function addScreen() {
-                document.getElementById("add");
+                window.location.href = "add.html";
             }
 
             function searchScreen() {
-                document.getElementById("search");
+                window.location.href = "search.html";
             }
         </script>
     </body>

@@ -39,19 +39,22 @@
         </div>
         <script>
             function homeScreen() {
-                document.getElementById("home");
+                document.getElementById("home").style.display = "block";
+                document.getElementById("about").style.display = "none";
+                document.getElementById("add").style.display = "none";
+                document.getElementById("search").style.display = "none";
             }
 
             function aboutScreen() {
-                document.getElementById("about");
+                window.location.href = "about.html";
             }
 
             function addScreen() {
-                document.getElementById("add");
+                window.location.href = "add.html";
             }
 
             function searchScreen() {
-                document.getElementById("search");
+                window.location.href = "search.html";
             }
 
             function addGuitar() {
