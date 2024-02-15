@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guitar Inventory Management</title>
+    </head>
+    <body>
+        <div id="home">
+            <div>
+                <button onclick="homeScreen()">Guitar Inventory Management</button>
+                <button onclick="aboutScreen()">About</button>
+                <button onclick="addScreen()">Add</button>
+                <button onclick="searchScreen()">Search</button>
+            </div>
+            <div>
+                <!--Put an Image here-->
+            </div>
+        </div>
+
+        <div id="about">
+            <div>
+                <button onclick="homeScreen()">Guitar Inventory Management</button>
+                <button onclick="aboutScreen()">About</button>
+                <button onclick="addScreen()">Add</button>
+                <button onclick="searchScreen()">Search</button>
+            </div>
+        </div>
+
+        <div id="add">
+            <div>
+                <button onclick="homeScreen()">Guitar Inventory Management</button>
+                <button onclick="aboutScreen()">About</button>
+                <button onclick="addScreen()">Add</button>
+                <button onclick="searchScreen()">Search</button>
+            </div>
+            <div>
+                <label>Serial Number:</label>
+                <input id="serialNumber"><br>
+
+                <label>Prce:</label>
+                <input id="price"><br>
+
+                <label>Builder:</label>
+                <input id="builder"><br>
+
+                <label>Model:</label>
+                <input id="model"><br>
+
+                <label>Type:</label>
+                <input id="type"><br>
+
+                <label>Back Wood:</label>
+                <input id="backWood"><br>
+
+                <label>Top Wood:</label>
+                <input id="topWood"><br>
+
+                <button onclick="addGuitar()">Add Guitar</button>
+            </div>
+        </div>
+
+        <div id="search">
+            <div>
+                <button onclick="homeScreen()">Guitar Inventory Management</button>
+                <button onclick="aboutScreen()">About</button>
+                <button onclick="addScreen()">Add</button>
+                <button onclick="searchScreen()">Search</button>
+            </div>
+            <div>
+                <label>Builder:</label>
+                <input id="builder"><br>
+
+                <label>Model:</label>
+                <input id="model"><br>
+
+                <label>Type:</label>
+                <input id="type"><br>
+
+                <label>Back Wood:</label>
+                <input id="backWood"><br>
+
+                <label>Top Wood:</label>
+                <input id="topWood"><br>
+
+                <button onclick="searchGuitar()">Search Guitar</button>
+            </div>
+        </div>
+
+        <script>
+            let guitars = [
+                { "serialNumber": "374", "price": 139.99, "builder": "Jackson", "model": "Acoustic", "type": "Bass", "backWood": "Maple", "topWood": "Oak" },
+                { "serialNumber": "7546434", "price": 999.99, "builder": "Cort", "model": "Electric", "type": "Steel", "backWood": "Oak", "topWood": "Walnut" },
+                { "serialNumber": "2354574", "price": 499.99, "builder": "Jackson", "model": "String", "type": "Gitarre", "backWood": "Walnut", "topWood": "Pine" },
+                { "serialNumber": "8708745", "price": 249.99, "builder": "Ibanez", "model": "Electric", "type": "Archtop", "backWood": "Birch", "topWood": "Elm" },
+                { "serialNumber": "23489", "price": 99.99, "builder": "Guild", "model": "Les Paul", "type": "Classical", "backWood": "Birch", "topWood": "Birch" },
+            ]
+
+            function homeScreen() {
+                document.getElementById("home");
+            }
+
+            function aboutScreen() {
+                document.getElementById("about");
+            }
+
+            function addScreen() {
+                document.getElementById("add");
+            }
+
+            function searchScreen() {
+                document.getElementById("search");
+            }
+
+            function addGuitar() {
+                var guitar = {
+                    "serialNumber": document.getElementById("serialNumber").value,
+                    "price": document.getElementById("price").value,
+                    "builder": document.getElementById("builder").value,
+                    "model": document.getElementById("model").value,
+                    "type": document.getElementById("type").value,
+                    "backWood": document.getElementById("backWood").value,
+                    "topWood": document.getElementById("topWood").value,
+                }
+
+                alert("You entered: " + JSON.stringify(guitar));
+            }
+            
+        </script>
+    </body>
+</html>
