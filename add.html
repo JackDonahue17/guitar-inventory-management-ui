@@ -16,7 +16,7 @@
                 <label>Serial Number:</label>
                 <input id="serialNumber"><br>
 
-                <label>Prce:</label>
+                <label>Price:</label>
                 <input id="price"><br>
 
                 <label>Builder:</label>
@@ -57,18 +57,49 @@
                 window.location.href = "search.html";
             }
 
-            function addGuitar() {
-            var guitar = {
-                "serialNumber": document.getElementById("serialNumber").value,
-                "price": document.getElementById("price").value,
-                "builder": document.getElementById("builder").value,
-                "model": document.getElementById("model").value,
-                "type": document.getElementById("type").value,
-                "backWood": document.getElementById("backWood").value,
-                "topWood": document.getElementById("topWood").value,
-            }
+            async function addGuitar() {
+                var serialNumber = document.getElementById("serialNumber").value;
+                var price = document.getElementById("price").value;
+                var builder = document.getElementById("builder").value;
+                var model = document.getElementById("model").value;
+                var type = document.getElementById("type").value;
+                var backWood = document.getElementById("backWood").value;
+                var topWood = document.getElementById("topWood").value;
 
-            alert("You entered: " + JSON.stringify(guitar));
+                if (!serialNumber || !price || !builder || !model || !type || !backWood || !topWood) {
+                    alert("Pleae make sure to fill in every field.");
+                    return;
+                }
+
+                var guitar = {
+                    "serialNumber": serialNumber,
+                    "price": price,
+                    "builder": builder,
+                    "model": model,
+                    "type": type,
+                    "backWood": backWood,
+                    "topWood": topWood
+                };
+                
+
+                fetch('http://localhost:8080/inventory/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(guitar),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        alert('Something went wrong. Please try again or contact the customer support team.');
+                    } else {
+                        alert('The guitar was added to the system.')
+                    }
+                    return response.json();
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
             }
         </script>
     </body>

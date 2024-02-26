@@ -91,11 +91,30 @@
                         (!backWood || guitar.backWood.includes(backWood)) &&
                         (!topWood || guitar.topWood.includes(topWood));
                 });
-                
+
+                fetch('http://localhost:8080/inventory/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ builder, model, type, backWood, topWood }),
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    displayMatchingGuitars(matchingGuitars);
+                })
+                .catch(error => {
+                    alert("Couldn't fetch guitars: " + error.message);
+                });
+            }
+
+            function showMatching(guitars) {
                 var tableBody = document.getElementById("guitarTableBody");
                 tableBody.innerHTML = "";
                 
-                matchingGuitars.forEach(function(guitar) {
+                matchingGuitars.forEach(function(guitars) {
                     var row = tableBody.insertRow();
                     row.insertCell().textContent = guitar.serialNumber;
                     row.insertCell().textContent = guitar.price;
