@@ -1,41 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div id="home">
-            <div>
-                <button onclick="homeScreen()">Guitar Inventory Management</button>
-                <button onclick="aboutScreen()">About</button>
-                <button onclick="addScreen()">Add</button>
-                <button onclick="searchScreen()">Search</button>
-            </div>
-            <div>
-                <img src="Guitar.jpeg" alt="Acoustic Guitar">
-            </div>
-        </div>
-        <script src="configuration.js"></script>
-        <script>
-            function homeScreen() {
-                document.getElementById("home").style.display = "block";
-                document.getElementById("about").style.display = "none";
-                document.getElementById("add").style.display = "none";
-                document.getElementById("search").style.display = "none";
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.css">
+    <title>Guitar Inventory Application Home Page</title>
+</head>
+<body>
 
-            function aboutScreen() {
-                window.location.href = "about.html";
-            }
+    <ul class="topnav">
+        <li><a class="active" href="index.html">Home Screen</a></li>
+        <li><a href="add.html">Add</a></li>        
+        <li><a href="about.html">About</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li class="right"><a  href="login.html">Login</a></li>
+      </ul>
 
-            function addScreen() {
-                window.location.href = "add.html";
-            }
-
-            function searchScreen() {
-                window.location.href = "search.html";
-            }
-        </script>
-    </body>
+      <script src="configuration.js"></script>
+   
+</body>
 </html>
