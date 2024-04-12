@@ -49,7 +49,9 @@
             </table>
         </div>
         </div>
+        <script src="configuration.js"></script>
         <script>
+            let host = getHost();
             function homeScreen() {
                 document.getElementById("home").style.display = "block";
                 document.getElementById("about").style.display = "none";
@@ -92,14 +94,19 @@
                         (!topWood || guitar.topWood.includes(topWood));
                 });
 
-                fetch('http://localhost:8080/inventory/search', {
+                fetch(host + '/inventory/search', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ${configuration.token()}'
                     },
                     body: JSON.stringify({ builder, model, type, backWood, topWood }),
                 })
-                .then(response => {
+                .then((response) =>
+                {
+                    if(response.status == 401) {
+                        logout();
+                    }
                     return response.json();
                 })
                 .then(data => {

@@ -37,7 +37,9 @@
                 <button onclick="addGuitar()">Add Guitar</button>
             </div>
         </div>
+        <script src="configuration.js"></script>
         <script>
+            let host = getHost();
             function homeScreen() {
                 document.getElementById("home").style.display = "block";
                 document.getElementById("about").style.display = "none";
@@ -82,18 +84,18 @@
                 };
                 
 
-                fetch('http://localhost:8080/inventory/add', {
+                fetch(host + '/inventory', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ${configuration.token()}'
                     },
                     body: JSON.stringify(guitar),
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        alert('Something went wrong. Please try again or contact the customer support team.');
-                    } else {
-                        alert('The guitar was added to the system.')
+                .then((response) =>
+                {
+                    if(response.status == 401) {
+                        logout();
                     }
                     return response.json();
                 })
